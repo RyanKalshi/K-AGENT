@@ -59,55 +59,176 @@ Backend:      Vercel Serverless Functions
 ```
 k-agent/
 │
-├── index.html                     # Main application (1,403 lines)
-│   ├── Spline 3D integration      # Cybernetic entity visualization
-│   ├── Terminal chat interface    # Real-time prediction queries
-│   ├── Voice synthesis engine     # TTS with leet speak normalization
-│   ├── About modal system         # K-AGENT lore and specs
-│   ├── Social integration         # Twitter, GitHub, Pump.fun links
-│   ├── Background music player    # Cyberpunk ambient audio
-│   └── Glitch/scan effects        # Visual aesthetic system
+├── index.html                                    # Core Application Layer (1,403 LOC)
+│   │
+│   ├── UI Components/
+│   │   ├── Terminal Interface                    # Custom CLI-style chat system
+│   │   │   ├── Message rendering engine          # Dynamic DOM manipulation
+│   │   │   ├── Typing indicator state machine    # Real-time response feedback
+│   │   │   ├── Auto-scroll viewport management   # Programmatic scroll behavior
+│   │   │   ├── Input validation & sanitization   # XSS prevention layer
+│   │   │   └── Conversation persistence          # In-memory history stack
+│   │   │
+│   │   ├── 3D Scene Integration                  # Spline WebGL renderer
+│   │   │   ├── IFrame sandbox isolation          # Security boundary
+│   │   │   ├── Lazy loading implementation       # Performance optimization
+│   │   │   ├── Opacity transition states         # Smooth visual loading
+│   │   │   └── Watermark overlay masking         # CSS gradient blending
+│   │   │
+│   │   ├── Modal System                          # About/Info overlay
+│   │   │   ├── Sequential typewriter renderer    # Character-by-character animation
+│   │   │   ├── Event delegation handlers         # Click/escape detection
+│   │   │   ├── Backdrop blur compositing         # GPU-accelerated effects
+│   │   │   └── Content state reset mechanism     # Memory cleanup on close
+│   │   │
+│   │   └── Status Components                     # UI indicators
+│   │       ├── Market scan pulsing indicator     # CSS animation loop
+│   │       ├── Social link grid layout           # Flex positioning system
+│   │       ├── CA address copy-to-clipboard      # Navigator API integration
+│   │       └── Notification toast system         # Timed visibility control
+│   │
+│   ├── Audio Systems/
+│   │   ├── Background Music Player               # HTML5 Audio API
+│   │   │   ├── User interaction trigger          # Autoplay policy compliance
+│   │   │   ├── Volume normalization (10%)        # Audio level management
+│   │   │   └── Loop state management             # Seamless playback
+│   │   │
+│   │   └── Voice Synthesis Engine                # TTS processing pipeline
+│   │       ├── Text sanitization layer           # Leet speak normalization
+│   │       │   ├── Block character removal       # Unicode filtering
+│   │       │   ├── Number-to-letter mapping      # Pronunciation correction
+│   │       │   └── Whitespace normalization      # Text cleanup
+│   │       │
+│   │       ├── API integration (ElevenLabs)      # External voice generation
+│   │       │   ├── Fetch request construction    # HTTP POST with auth
+│   │       │   ├── Blob stream handling          # Binary audio processing
+│   │       │   └── Object URL lifecycle mgmt     # Memory leak prevention
+│   │       │
+│   │       └── Playback control system           # Audio state machine
+│   │           ├── Queue management              # Single-speaker constraint
+│   │           ├── Error recovery fallback       # Silent failure handling
+│   │           └── Resource cleanup on end       # URL revocation
+│   │
+│   ├── Visual Effects/
+│   │   ├── Scanline animation                    # Linear gradient translation
+│   │   ├── CRT noise overlay                     # Opacity-based flicker
+│   │   ├── Glitch text displacement              # Transform-based jitter
+│   │   ├── Terminal glow effects                 # Box-shadow layering
+│   │   └── Button pulse animations               # Keyframe interpolation
+│   │
+│   └── Event Management/
+│       ├── Mouse movement tracking               # Opacity parallax effects
+│       ├── Keyboard event listeners              # Enter-to-send detection
+│       ├── Click delegation system               # Bubbling-based routing
+│       └── Window interaction triggers           # Music autoplay handlers
 │
 ├── api/
-│   ├── chat.js                    # Serverless prediction agent
-│   │   ├── Claude Sonnet 4 integration
-│   │   ├── K-AGENT personality prompt (aggressive, data-driven)
-│   │   ├── Dynamic token allocation (150-400 based on complexity)
-│   │   ├── Conversation history management
-│   │   ├── CORS middleware
-│   │   └── Error handling & logging
 │   │
-│   └── speak.js                   # Voice synthesis endpoint (optional)
-│       ├── ElevenLabs API integration
-│       ├── Text normalization
-│       └── Audio blob generation
+│   ├── chat.js                                   # Serverless AI Backend (145 LOC)
+│   │   │
+│   │   ├── Request Processing/
+│   │   │   ├── Method validation (POST-only)     # HTTP verb filtering
+│   │   │   ├── CORS header injection             # Cross-origin support
+│   │   │   │   ├── Access-Control-Allow-Origin   # Wildcard permissive
+│   │   │   │   ├── Access-Control-Allow-Methods  # Verb whitelist
+│   │   │   │   └── Access-Control-Allow-Headers  # Header permissioning
+│   │   │   │
+│   │   │   └── Body parsing & validation         # JSON schema enforcement
+│   │   │       ├── Messages array type check     # Runtime validation
+│   │   │       └── Request structure validation  # Error on malformed
+│   │   │
+│   │   ├── AI Integration Layer/
+│   │   │   ├── Anthropic API client              # Claude Sonnet 4 interface
+│   │   │   │   ├── Authentication (API key)      # Env var injection
+│   │   │   │   ├── Version pinning (2023-06-01)  # API stability
+│   │   │   │   └── Model specification           # claude-sonnet-4-20250514
+│   │   │   │
+│   │   │   ├── System Prompt Engineering         # K-AGENT personality
+│   │   │   │   ├── Core identity definition      # Autonomous agent role
+│   │   │   │   ├── Communication style rules     # Data-driven, aggressive
+│   │   │   │   ├── Response format templates     # With examples by complexity
+│   │   │   │   ├── Forbidden behavior list       # Anti-pattern prevention
+│   │   │   │   └── Market philosophy tenets      # Certainty calculated
+│   │   │   │
+│   │   │   └── Dynamic Token Allocation          # Intelligent response sizing
+│   │   │       ├── Query complexity analysis     # Regex-based classification
+│   │   │       │   ├── Simple (150 tokens)       # Greetings, yes/no
+│   │   │       │   ├── Medium (250 tokens)       # Standard queries
+│   │   │       │   └── Complex (400 tokens)      # Multi-part analysis
+│   │   │       │
+│   │   │       └── Heuristic detection rules     # Length + keyword matching
+│   │   │
+│   │   ├── Response Processing/
+│   │   │   ├── Content extraction                # Parse Claude response
+│   │   │   ├── Text normalization                # Format consistency
+│   │   │   └── JSON serialization                # Client payload construction
+│   │   │
+│   │   └── Error Handling/
+│   │       ├── API failure recovery              # Status code checking
+│   │       ├── Logging subsystem                 # Console error output
+│   │       └── Client error responses            # HTTP 500 with details
+│   │
+│   └── speak.js                                  # Voice Synthesis Endpoint (Optional)
+│       │
+│       ├── ElevenLabs API Integration/
+│       │   ├── HTTP client configuration         # Fetch with auth headers
+│       │   ├── Voice model selection             # Predefined voice ID
+│       │   ├── Audio format specification        # MP3 encoding params
+│       │   └── Streaming response handling       # Binary blob transfer
+│       │
+│       ├── Text Preprocessing/
+│       │   ├── Leet speak conversion             # Number-to-letter mapping
+│       │   ├── Special character stripping       # Block removal
+│       │   └── Pronunciation optimization        # TTS-friendly formatting
+│       │
+│       └── Audio Delivery/
+│           ├── Blob generation                   # Binary audio creation
+│           ├── MIME type specification           # audio/mpeg headers
+│           └── Stream response                   # Efficient transfer
 │
-├── vercel.json                    # Deployment configuration
-│   ├── Serverless function routes
-│   ├── Environment variable mapping
-│   └── Build optimization settings
+├── vercel.json                                   # Platform Configuration
+│   ├── Routes mapping                            # /api/* → serverless functions
+│   ├── Build settings                            # Node.js runtime version
+│   ├── Environment variable bindings             # Secret injection points
+│   └── Output compression                        # Gzip/Brotli encoding
 │
-├── .env.local                     # Environment variables (not committed)
-│   ├── ANTHROPIC_API_KEY
-│   └── ELEVENLABS_API_KEY
+├── .env.local                                    # Local Development Secrets
+│   ├── ANTHROPIC_API_KEY                         # Claude API authentication
+│   └── ELEVENLABS_API_KEY                        # Voice synthesis auth
 │
-└── README.md                      # Documentation
+└── README.md                                     # Technical Documentation
+
 ```
 
-### Core Components Breakdown
+### Architecture Overview
 
-**Frontend Architecture:**
-- **Terminal UI**: Custom command-line interface with typewriter animations, scrollable history, auto-focus input, glitch effects
-- **3D Scene**: Spline-embedded cybernetic entity with cursor tracking, loading states, and hardware acceleration
-- **Voice Engine**: Browser-native TTS with rate/pitch control, leet speak conversion (`pr0bability` → `probability`), and error fallback
-- **Modal System**: Dynamic typewriter effect for lore display, escape key handling, click-outside-to-close
-- **State Management**: Conversation history array, music playback state, typing indicator control
+**Frontend Stack:**
+- **Rendering Engine**: Vanilla JavaScript DOM manipulation (zero framework overhead)
+- **State Management**: Closure-based conversation history with in-memory persistence
+- **Animation System**: CSS keyframe animations with GPU acceleration via `transform` and `opacity`
+- **Event System**: Delegation pattern for efficient DOM event handling
+- **Audio Pipeline**: Dual-layer system (HTML5 Audio API + Web Speech API fallback)
 
-**Backend Architecture:**
-- **Serverless Functions**: Vercel edge deployment with sub-500ms cold start
-- **AI Integration**: Claude Sonnet 4 with custom system prompt for K-AGENT personality
-- **Token Optimization**: Adaptive max_tokens (150/250/400) based on query complexity detection
-- **Response Pipeline**: User input → History append → Claude API → Response extraction → History update → Client delivery
+**Backend Stack:**
+- **Runtime**: Node.js 18.x on Vercel Edge Network
+- **Deployment**: Serverless functions with <500ms cold start
+- **AI Provider**: Anthropic Claude Sonnet 4 (claude-sonnet-4-20250514)
+- **API Architecture**: RESTful endpoints with JSON request/response
+- **Error Strategy**: Graceful degradation with client-friendly error messages
+
+**Data Flow:**
+```
+User Input → Terminal UI → API Gateway → Claude Sonnet 4 → Response Processing → Voice Synthesis → Audio Playback
+     ↓           ↓              ↓              ↓                    ↓                    ↓              ↓
+  Validation  Sanitization  Auth Layer   AI Processing      Text Extraction    ElevenLabs API   Browser Audio
+```
+
+**Performance Optimizations:**
+- Lazy-loaded 3D scene with intersection observer
+- Debounced event handlers for mousemove
+- Memoized DOM queries to reduce reflows
+- CSS containment for paint optimization
+- Blob URL lifecycle management to prevent memory leaks
 
 ## Features
 
