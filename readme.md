@@ -58,12 +58,56 @@ Backend:      Vercel Serverless Functions
 
 ```
 k-agent/
-├── index.html          # Main interface
+│
+├── index.html                     # Main application (1,403 lines)
+│   ├── Spline 3D integration      # Cybernetic entity visualization
+│   ├── Terminal chat interface    # Real-time prediction queries
+│   ├── Voice synthesis engine     # TTS with leet speak normalization
+│   ├── About modal system         # K-AGENT lore and specs
+│   ├── Social integration         # Twitter, GitHub, Pump.fun links
+│   ├── Background music player    # Cyberpunk ambient audio
+│   └── Glitch/scan effects        # Visual aesthetic system
+│
 ├── api/
-│   ├── chat.js        # Prediction agent backend
-│   └── speak.js       # Voice synthesis endpoint
-└── README.md
+│   ├── chat.js                    # Serverless prediction agent
+│   │   ├── Claude Sonnet 4 integration
+│   │   ├── K-AGENT personality prompt (aggressive, data-driven)
+│   │   ├── Dynamic token allocation (150-400 based on complexity)
+│   │   ├── Conversation history management
+│   │   ├── CORS middleware
+│   │   └── Error handling & logging
+│   │
+│   └── speak.js                   # Voice synthesis endpoint (optional)
+│       ├── ElevenLabs API integration
+│       ├── Text normalization
+│       └── Audio blob generation
+│
+├── vercel.json                    # Deployment configuration
+│   ├── Serverless function routes
+│   ├── Environment variable mapping
+│   └── Build optimization settings
+│
+├── .env.local                     # Environment variables (not committed)
+│   ├── ANTHROPIC_API_KEY
+│   └── ELEVENLABS_API_KEY
+│
+└── README.md                      # Documentation
 ```
+
+### Core Components Breakdown
+
+**Frontend Architecture:**
+- **Terminal UI**: Custom command-line interface with typewriter animations, scrollable history, auto-focus input, glitch effects
+- **3D Scene**: Spline-embedded cybernetic entity with cursor tracking, loading states, and hardware acceleration
+- **Voice Engine**: Browser-native TTS with rate/pitch control, leet speak conversion (`pr0bability` → `probability`), and error fallback
+- **Modal System**: Dynamic typewriter effect for lore display, escape key handling, click-outside-to-close
+- **State Management**: Conversation history array, music playback state, typing indicator control
+
+**Backend Architecture:**
+- **Serverless Functions**: Vercel edge deployment with sub-500ms cold start
+- **AI Integration**: Claude Sonnet 4 with custom system prompt for K-AGENT personality
+- **Token Optimization**: Adaptive max_tokens (150/250/400) based on query complexity detection
+- **Response Pipeline**: User input → History append → Claude API → Response extraction → History update → Client delivery
 
 ## Features
 
