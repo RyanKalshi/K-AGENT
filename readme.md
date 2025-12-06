@@ -192,10 +192,6 @@ k-agent/
 │   ├── Environment variable bindings             # Secret injection points
 │   └── Output compression                        # Gzip/Brotli encoding
 │
-├── .env.local                                    # Local Development Secrets
-│   ├── ANTHROPIC_API_KEY                         # Claude API authentication
-│   └── ELEVENLABS_API_KEY                        # Voice synthesis auth
-│
 └── README.md                                     # Technical Documentation
 
 ```
@@ -423,7 +419,7 @@ utterance.volume = 0.8;
 ## Socials
 
 - **Website**: [k-agent.xyz]()
-- **Twitter**: [@KAgentAI](https://x.com/KAgentAI)
+- **Twitter**: [@KAgentSol](https://x.com/KAgentSol)
 - **Operator**: [@ryanatkalshi](https://x.com/ryanatkalshi)
 
 ## Disclaimer
