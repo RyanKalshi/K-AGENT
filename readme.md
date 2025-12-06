@@ -418,7 +418,7 @@ utterance.volume = 0.8;
 
 ## Socials
 
-- **Website**: [k-agent.xyz]()
+- **Website**: [k-agent.xyz](https://k-agent.xyz)
 - **Twitter**: [@KAgentSol](https://x.com/KAgentSol)
 - **Operator**: [@ryanatkalshi](https://x.com/ryanatkalshi)
 
